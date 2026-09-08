@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 project(car_dodge
-        VERSION 0.1.0.0
+        VERSION 0.2.0.0
         LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/khromenokroman/car_dodge"
 )
