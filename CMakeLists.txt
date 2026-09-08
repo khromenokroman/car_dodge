@@ -19,6 +19,7 @@ target_link_libraries(car_dodge raylib)
 
 install(TARGETS car_dodge RUNTIME DESTINATION bin)
 install(DIRECTORY src/images/ DESTINATION share/car_dodge/images)
+install(DIRECTORY src/music/ DESTINATION share/car_dodge/music)
 
 set(CPACK_GENERATOR "DEB")
 set(CPACK_PACKAGE_NAME "car-dodge")

@@ -87,6 +87,7 @@ private:
   void update_road();
   void check_conflicts();
   static void texture_deleter(Texture2D *textura);
+  static void music_deleter(Music *music);
 
   std::vector<Barrier> m_barriers;
   std::vector<std::vector<Rectangle>> m_road;
@@ -95,6 +96,7 @@ private:
   std::vector<std::unique_ptr<Texture2D, void (*)(Texture2D *)>>
       m_texture_road;
   std::unique_ptr<Texture2D, void (*)(Texture2D *)> m_texture_player;
+  std::unique_ptr<Music, void (*)(Music *)> m_sound;
   Rectangle m_car{};
   double m_last_time{};
   std::size_t m_score{};

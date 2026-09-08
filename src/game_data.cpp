@@ -10,6 +10,9 @@ namespace {
 std::string asset_path(std::string_view filename) {
   return std::string(ASSETS_DIR) + std::string(filename);
 }
+std::string music_path(std::string_view filename) {
+  return std::string(MUSIC_DIR) + std::string(filename);
+}
 } // namespace
 
 Barrier::Barrier(float x, float y, float width, float height)
@@ -19,7 +22,10 @@ Barrier::Barrier(Rectangle rec, int index) : m_rec{rec}, m_index{index} {}
 GameData::GameData()
     : m_texture_player(
           new Texture2D(LoadTexture(asset_path("player_car.png").c_str())),
-          texture_deleter) {
+          texture_deleter),
+      m_sound(new Music(LoadMusicStream(music_path("arcade_song.ogg").c_str())),
+              music_deleter) {
+  PlayMusicStream(*m_sound);
   m_texture_barriers.emplace_back(
       new Texture2D(LoadTexture(asset_path("motorcycle_blue.png").c_str())),
       texture_deleter);
@@ -54,6 +60,7 @@ GameData::GameData()
 }
 
 void GameData::update() {
+  UpdateMusicStream(*m_sound);
   if (m_state == GAME_STATE::PLAYING) {
     update_car();
     update_barriers();
@@ -189,4 +196,10 @@ void GameData::texture_deleter(Texture2D *textura) {
     UnloadTexture(*textura);
   }
   delete textura;
+}
+void GameData::music_deleter(Music *music) {
+  if (music) {
+    UnloadMusicStream(*music);
+  }
+  delete music;
 }

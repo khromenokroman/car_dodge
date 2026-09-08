@@ -13,4 +13,5 @@ constexpr static float ROAD_WIDTH = 600;
 constexpr static int FPS = 60;
 constexpr static std::string_view TITLE = "Car Dodge";
 constexpr static std::string_view ASSETS_DIR = "/usr/share/car_dodge/images/";
+constexpr static std::string_view MUSIC_DIR = "/usr/share/car_dodge/music/";
 enum class GAME_STATE { PLAYING, GAME_OVER};
