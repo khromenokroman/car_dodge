@@ -116,6 +116,9 @@ void GameData::render() {
                      180.0f, WHITE);
     }
   } else if (m_state == GAME_STATE::GAME_OVER) {
+    auto const text_score = TextFormat("Score: %lu", m_score);
+    auto const text_size = MeasureText(text_score, 48);
+    DrawText(text_score, (WIDTH - text_size)/2, HEIGHT/2, 48, WHITE);
     DrawText("Press Enter the new game", 310, HEIGHT - 40, 36, WHITE);
     if (IsKeyPressed(KEY_ENTER)) {
       reset_game();
